@@ -1,5 +1,8 @@
 package gravegoldapp.model;
 
+import gravegoldapp.until.Label.LABEL;
+import gravegoldapp.until.Label;
+
 /**
  * Each {@link Node} is part of Environment. Agent will find out that way to
  * catch gold in this Environment
@@ -13,7 +16,21 @@ public class Node {
     private Node mUpperNode;
     private Node mBottomNode;
     private int mPosition;
-    private String mLabel;
+    private LABEL mLabel;
+
+    private Node mNode;
+
+    public static Node createNode(int postion) {
+        if (postion < 0 || postion > 15) {
+            return null;
+        }
+        return new Node(postion);
+    }
+
+    private Node(int postion) {
+        mPosition = postion;
+        mLabel = LABEL.NULL;
+    }
 
     public Node getLeftNode() {
         return mLeftNode;
@@ -55,12 +72,16 @@ public class Node {
         this.mPosition = position;
     }
 
-    public String getmLabel() {
+    public LABEL getLabel() {
         return mLabel;
     }
 
-    public void setmLabel(String mLabel) {
+    public void setLabel(LABEL mLabel) {
         this.mLabel = mLabel;
+    }
+
+    public void tranmissionMsg(int postison) {
+
     }
 
 }

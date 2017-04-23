@@ -5,17 +5,21 @@
  */
 package gravegoldapp;
 
+import gravegoldapp.controller.HandlerEnvironment;
+import gravegoldapp.model.Environment;
+import gravegoldapp.model.Node;
+
 /**
  *
  * @author beepi
  */
 public class GraveGoldApp {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws IllegalArgumentException {
+        HandlerEnvironment handler = HandlerEnvironment.getInstant();
+        Environment enviroment = handler.initialEnvironment();
+        for(Node node : enviroment.getNodes()){
+            System.out.print(node.toString() + "\n \n");
+        }
     }
-    
 }
